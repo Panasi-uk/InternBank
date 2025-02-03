@@ -35,27 +35,16 @@ export class AuthService {
   //definir um metodo register(){}: porque a partir dele, a requisição ao backend será feita
   // ao usar essa expressão definimos um metodo que passa a ser uma tarefa assincrona
   register(usuario: Usuario, roleName: string): Observable<{message: string}>{
-    return this.http.post<{message: string}>(`${this.apiUrl}/user/register?roleName=${roleName}`,usuario)
+    return this.http.post<{message: string}>(`${this.apiUrl}/api/usuarios?roleName=${roleName}`,usuario)
   } 
 
-  /*
-    user: parametro/objeto vai conter os dados que queremos enviar para a base
-    roleName: nome do "papel do usuario dentro do sistema" (admin ou user)
-    requisição ao backend: estamos fazendo uma requisição POST - para enviar dados para o backend - atraves da rota/endpoint ${apiUrl}/user/register; alem disso, tambem estamos passando, por essa rota o papel do usuario como um parametro da consulta
-    (roleName)
-    retorno: um elemento que emite um objeto com uma mensagem de sucesso ou erro.
-  
-  */
 
-  //4 - Definir o metodo de login
-  //temos que transforma-lo numa requisição assincrona parametrizando o metodo par
-  //receber os dados com os quais eçe vai lidar
     login(credentials: {email: string, password: string}): Observable<{message: string}>{
       const authHeader = `Basic ${btoa(`${credentials.email}: ${credentials.password}`)}`
       console.log('Enviando para o backend:', credentials)
 
 
-      return this.http.post<{message:string}>(`${this.apiUrl}/users/login`, {Headers: new HttpHeaders({'Content-Type':'aplication/json'})}).pipe(
+      return this.http.post<{message:string}>(`${this.apiUrl}/usuarios/login`, credentials, {headers: new HttpHeaders({'Content-Type':'application/json'})}).pipe(
         tap((response)=>{
           console.log('Login bem sucedido!')
           localStorage.setItem('authHeader', authHeader) //atualiza o state/estado da aplicação
@@ -71,7 +60,7 @@ export class AuthService {
     getAuthHeader(): string{
       return localStorage.getItem('authHeader') || ''
     }
-
+    
     
     getCurrentUserEmail(): Observable<{email: string}>{
       return this.http.get<{email: string}>(`${this.apiUrl}/users/current-user`, 
@@ -82,7 +71,7 @@ export class AuthService {
 
     //6- definir o metodo logout
     logout(): Observable<void>{
-      return this.http.post<void>(`${this.apiUrl}/users/logout`, {}, {
+      return this.http.post<void>(`${this.apiUrl}/usuarios/logout`, {}, {
         headers: new HttpHeaders({Authorization: this.getAuthHeader()})
       }).pipe(
         tap(()=> {
@@ -94,8 +83,7 @@ export class AuthService {
 
     }
 
-    //7 - passo definir um novo metodo; esse metodo possui um unico objetivo simples;
-    //verificar se o usuario esta logado no sistema
+ 
    
 }
 
