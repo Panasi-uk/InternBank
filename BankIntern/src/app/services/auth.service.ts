@@ -35,7 +35,7 @@ export class AuthService {
   //definir um metodo register(){}: porque a partir dele, a requisição ao backend será feita
   // ao usar essa expressão definimos um metodo que passa a ser uma tarefa assincrona
   register(usuario: Usuario, roleName: string): Observable<{message: string}>{
-    return this.http.post<{message: string}>(`${this.apiUrl}/user/register?roleName=${roleName}`,usuario)
+    return this.http.post<{message: string}>(`${this.apiUrl}/usuarios/register?roleName=${roleName}`,usuario)
   } 
 
   /*
@@ -51,7 +51,7 @@ export class AuthService {
   //temos que transforma-lo numa requisição assincrona parametrizando o metodo par
   //receber os dados com os quais eçe vai lidar
     login(credentials: {email: string, password: string}): Observable<{message: string}>{
-      return this.http.post<{message:string}>(`${this.apiUrl}/users/login`,credentials,{withCredentials: true}).pipe(
+      return this.http.post<{message:string}>(`${this.apiUrl}/usuarios/login`,credentials,{withCredentials: true}).pipe(
         tap((response)=>{
           console.log('Login bem sucedido!', response.message)
           localStorage.setItem('isLoggedIn', 'true') //atualiza o state/estado da aplicação
@@ -60,7 +60,7 @@ export class AuthService {
     }
     //5- definir um metodo para obter o usuario atual - que, no momento, esta logado no sistema
     getCurrentUserEmail(): Observable<{email: string}>{
-      return this.http.get<{email: string}>(`${this.apiUrl}/users/current-user`, 
+      return this.http.get<{email: string}>(`${this.apiUrl}/usuarios/current-user`, 
         {withCredentials: true})
         //metodo assincrona que recupera o usuario logado no sistema
         //requisição: get para rota, que habilita o uso de cookies a partir do  {withCredentials: true}
@@ -68,7 +68,7 @@ export class AuthService {
 
     //6- definir o metodo logout
     logout(): Observable<void>{
-      return this.http.post<void>(`${this.apiUrl}/users/logout`, {}, {withCredentials: true}).pipe(
+      return this.http.post<void>(`${this.apiUrl}/usuarios/logout`, {}, {withCredentials: true}).pipe(
         tap(()=> {
           localStorage.removeItem('isLoggedIn') //remove o state/estado da autenticação, ou seja, encerrando a sessão de usuario.
         })
