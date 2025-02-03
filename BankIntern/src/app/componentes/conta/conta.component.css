@@ -1,0 +1,150 @@
+/* Variáveis de cores e fontes */
+:host {
+    --cor-de-fundo: #1D2D44;
+    --cor-secundaria: #0D1321;
+    --cor-terceira: #3E5C76;
+    --quarta-cor: #748CAB;
+    --quinta-cor: #F0EBD8;
+    --fonte-primaria: "Arial";
+    --fonte-secundaria: "Poppins";
+}
+
+/* Estilos gerais do menu */
+.menu-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--cor-de-fundo);
+    color: var(--quinta-cor);
+    font-family: var(--fonte-secundaria);
+    padding: 20px;
+    gap: 20px;
+    min-height: 100vh; /* Garante que o contêiner ocupe toda a altura da tela */
+    box-sizing: border-box; /* Inclui o padding no cálculo da altura total */
+}
+
+/* Estilo do perfil de usuário */
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    background-color: var(--cor-secundaria);
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 600px;
+}
+
+.profile-pic {
+    width: 80px;
+    height: 80px;
+    border-radius: 40%;
+    object-fit: cover;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+.saldo-info:hover {
+    display: flex;
+    align-items: center;
+    color: #0D1321;
+    background-color: var(--quarta-cor);
+    gap: 10px;
+    font-size: 2em;
+}
+
+.toggle-saldo {
+    display: flex;
+    background-color: var(--quinta-cor);
+    background: none;
+    border: none;
+    color: var(--quinta-cor);
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+.toggle-saldo:hover {
+    color: var(--quinta-cor);
+}
+
+/* Ajuste do título */
+h1 {
+    margin-top: 30px; /* Mais espaço entre o título e o topo */
+    font-size: 1.8em;
+    font-weight: 600;
+    color: var(--quinta-cor);
+}
+
+/* Estilos para as opções de menu */
+.menu-options {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 colunas na primeira linha */
+    gap: 20px;
+    width: 100%;
+    max-width: 600px;
+    margin-top: 20px;
+    justify-content: center; /* Centraliza os itens no grid */
+}
+
+/* Estilizando os botões */
+.menu-options {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza os itens no eixo horizontal */
+    gap: 20px;
+    width: 100%;
+    max-width: 600px;
+    margin-top: 20px;
+}
+
+.menu-row {
+    display: flex;
+    justify-content: space-between; /* Distribui os botões de forma uniforme */
+    width: 100%;
+    max-width: 600px;
+    gap: 20px;
+}
+
+/* Segunda linha centralizada */
+.menu-center {
+    justify-content: center; /* Mantém os botões centralizados */
+}
+
+/* Estilo dos botões */
+.menu-options button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--cor-terceira);
+    color: var(--quinta-cor);
+    border: none;
+    border-radius: 15px;
+    padding: 20px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    width: 130px;
+    height: 80px;
+}
+
+.menu-options button:hover {
+    background-color: var(--quarta-cor);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .menu-row {
+        flex-wrap: wrap;
+        justify-content: center; /* Centraliza os botões em telas menores */
+    }
+}
+
+
+
+

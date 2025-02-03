@@ -1,0 +1,35 @@
+<div class="menu-container">
+  <!-- Perfil do usuário -->
+  <div class="user-profile">
+    <img class="profile-pic" src="foto.jpg" alt="Foto de Perfil">
+    <div class="profile-info">
+      <h1>Bem-vindo ao Intern Bank</h1>
+      <div class="saldo-info">
+        <span *ngIf="showSaldo">********</span>
+        <span *ngIf="showSaldo">{{ showSaldo }}</span>
+        <button (click)="toggleSaldo()" class="toggle-saldo">
+          <span *ngIf="showSaldo"></span>
+          <span *ngIf="showSaldo"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Opções do menu com ajuste manual -->
+  <div class="menu-options">
+    <!-- Primeira linha: 4 botões -->
+    <div class="menu-row">
+      <button routerLink="/saldo">Ver Saldo</button>
+      <button routerLink="/extrato">Ver Extrato</button>
+      <button routerLink="/transferencia">Transferência</button>
+      <button routerLink="/deposito">Depósito</button>
+    </div>
+
+    <!-- Segunda linha: 3 botões centralizados -->
+    <div class="menu-row menu-center">
+      <button routerLink="/saque">Saque</button>
+      <button routerLink="/pix">Pix</button>
+      <button routerLink="/pagamento">Pagamento</button>
+    </div>
+  </div>
+</div>

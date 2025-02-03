@@ -1,0 +1,87 @@
+:host {
+    --cor-de-fundo: #1D2D44;
+    --cor-secundaria: #0D1321;
+    --cor-terceira: #3E5C76;
+    --quarta-cor: #748CAB;
+    --quinta-cor: #F0EBD8;
+    --fonte-primaria: "Arial";
+    --fonte-secundaria: "Poppins";
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--cor-de-fundo);
+    color: var(--quinta-cor);
+    font-family: var(--fonte-secundaria);
+    height: 100vh;
+    padding: 30px;
+    border-radius: 10px;
+    width: 100%;
+    margin: 50px auto;
+    
+}
+
+h2 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    color: var(--quinta-cor);
+}
+
+input {
+    
+    padding: 12px;
+    font-size: 1em;
+    border: 2px solid var(--cor-terceira);
+    border-radius: 8px;
+    background-color: var(--cor-secundaria);
+    color: var(--quinta-cor);
+    outline: none;
+    transition: border-color 0.3s ease-in-out;
+}
+
+input::placeholder {
+    color: var(--quarta-cor);
+    font-family: var(--fonte-primaria);
+}
+
+input:focus {
+    border-color: var(--quinta-cor);
+}
+
+button {
+    margin-top: 15px;
+    width: 210px;
+    padding: 12px;
+    font-size: 1.2em;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--cor-terceira);
+    color: var(--quinta-cor);
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+    background-color: var(--quarta-cor);
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+    .container {
+        width: 90%;
+        padding: 20px;
+    }
+    
+    h2 {
+        font-size: 1.5em;
+    }
+
+    input,
+    button {
+        font-size: 1em;
+    }
+}

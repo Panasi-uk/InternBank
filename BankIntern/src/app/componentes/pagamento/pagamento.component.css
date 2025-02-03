@@ -1,0 +1,99 @@
+:host {
+    --cor-de-fundo: #1D2D44;
+    --cor-secundaria: #0D1321;
+    --cor-terceira: #3E5C76;
+    --quarta-cor: #748CAB;
+    --quinta-cor: #F0EBD8;
+    --fonte-primaria: "Arial";
+    --fonte-secundaria: "Poppins";
+}
+  
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--cor-de-fundo);
+    color: var(--quinta-cor);
+    font-family: var(--fonte-secundaria);
+    height: 100vh;
+    padding: 40px;
+    height: 100vh;
+
+}
+  
+h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: var(--quinta-cor);
+}
+  
+input {
+    padding: 12px;
+    font-size: 1.1em;
+    border: 2px solid var(--cor-terceira);
+    border-radius: 8px;
+    background-color: var(--quinta-cor);
+    color: var(--quinta-cor);
+    outline: none;
+    width: 50%;  /* Faz os inputs ocuparem toda a largura disponível */
+    margin-bottom: 20px;  /* Espaçamento entre os campos */
+    box-sizing: border-box;
+    transition: border-color 0.3s ease-in-out;
+}
+  
+input::placeholder {
+    color: var(--quarta-cor);
+    font-family: var(--fonte-primaria);
+}
+  
+input:focus {
+    border-color: var(--quinta-cor);
+}
+  
+button {
+    padding: 12px;
+    font-size: 1.2em;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--cor-terceira);
+    color: var(--quinta-cor);
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    width: 50%;  /* Faz o botão ocupar toda a largura disponível */
+}
+  
+button:hover {
+    background-color: var(--quarta-cor);
+}
+  
+  /* Responsividade */
+@media (max-width: 768px) {
+    .container {
+      padding: 30px;
+}
+  
+h2 {
+      font-size: 1.6em;
+}
+  
+input, button {
+      font-size: 1em;
+    }
+}
+  
+@media (max-width: 480px) {
+    .container {
+      padding: 20px;
+}
+  
+h2 {
+      font-size: 1.4em;
+}
+  
+input,
+    button {
+      font-size: 0.9em;
+    }
+}

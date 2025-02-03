@@ -1,0 +1,6 @@
+html, body {
+  height: 100%; /* Para que o container tenha 100% de altura */
+  margin: 0; /* Para que não haja margem */
+  padding: 0; /* Para que não haja padding */
+} 
+

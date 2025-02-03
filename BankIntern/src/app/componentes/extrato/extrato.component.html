@@ -1,0 +1,21 @@
+<div class="extrato-container">
+    <h2>Extrato Bancário</h2>
+    <table class="extrato-table">
+        <thead>
+            <tr>
+                <th>Data</th>
+                <th>Descrição</th>
+                <th>Valor</th>
+                <th>Saldo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let transacao of transacoes">
+                <td>{{ transacao.data }}</td>
+                <td>{{ transacao.descricao }}</td>
+                <td>{{ transacao.valor }}</td> 
+                <td>{{ transacao.saldo }}</td> 
+            </tr>
+        </tbody>
+    </table>
+</div>

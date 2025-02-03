@@ -1,0 +1,22 @@
+<div class="login-container">
+    <h2> {{ tituloComp }} </h2>
+    <form (ngSubmit) = "onSubmit()">
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" [(ngModel)] = "credentials.email" name="email" required> 
+        </div>
+
+        <div class="form-group">
+            <label for="password">Senha</label>
+            <input type="password" id="password" [(ngModel)] = "credentials.password" name="password" required> 
+        </div>
+        <button type="submit">
+            Acessar
+        </button>
+    </form>
+
+        <p>
+            Não tem uma conta?<a routerLink="/cadastro"> Cadastre-se.</a>
+        </p>
+    <footer class="rodape">Direitos Reservado - Intern Bank 2025</footer>
+</div>

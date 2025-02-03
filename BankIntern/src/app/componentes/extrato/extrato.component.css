@@ -1,0 +1,80 @@
+:host {
+    --cor-de-fundo: #1D2D44;
+    --cor-secundaria: #0D1321;
+    --cor-terceira: #3E5C76;
+    --quarta-cor: #748CAB;
+    --quinta-cor: #F0EBD8;
+    --fonte-primaria: "Arial";
+    --fonte-secundaria: "Poppins";
+}
+  
+.extrato-container {
+    background-color: var(--cor-de-fundo);
+    color: var(--quinta-cor);
+    font-family: var(--fonte-secundaria);
+    padding: 30px;
+    height: 100vb;
+}
+  
+h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: var(--quinta-cor);
+    text-align: center;
+}
+  
+.extrato-table {
+    width: 100%;
+    margin-top: 20px;
+}
+  
+.extrato-table th,
+  .extrato-table td {
+    padding: 12px;
+    text-align: left;
+    font-size: 1em;
+}
+  
+.extrato-table th {
+    background-color: var(--cor-secundaria);
+    color: var(--quinta-cor);
+}
+  
+.extrato-table td {
+    background-color: var(--cor-terceira);
+    color: var(--quinta-cor);
+}
+  
+.extrato-table tr:nth-child(even) {
+    background-color: var(--quarta-cor);
+}
+  
+.extrato-table tr:hover {
+    background-color: var(--cor-secundaria);
+    color: var(--quinta-cor);
+}
+  
+@media (max-width: 768px) {
+    .extrato-container {
+      padding: 20px;
+}
+  
+.extrato-table th,
+.extrato-table td {
+      font-size: 0.9em;
+      padding: 10px;
+  }
+}
+  
+@media (max-width: 480px) {
+    .extrato-container {
+      padding: 15px;
+}
+  
+.extrato-table th,
+.extrato-table td {
+      font-size: 0.8em;
+      padding: 8px;
+    }
+}
+  

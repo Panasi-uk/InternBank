@@ -1,0 +1,9 @@
+<div class="container">
+    <h2>Administração</h2>
+    <h3>Lista de Usuários</h3>
+    <ul>
+      <li *ngFor="let usuario of usuarios">
+        {{ usuario.nome }} - {{ usuario.email }}
+      </li>
+    </ul>
+</div>
