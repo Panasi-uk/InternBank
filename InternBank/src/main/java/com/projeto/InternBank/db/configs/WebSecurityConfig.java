@@ -42,7 +42,7 @@ public class WebSecurityConfig {
         AuthenticationManagerBuilder authenticationManagerBuilder =
             http.getSharedObject(AuthenticationManagerBuilder.class);
         authenticationManagerBuilder
-            .usuarioService(usuarioService)
+            .userDetailsService(userDetailsService)
             .passwordEncoder(passwordEncoder()); // Usa o método passwordEncoder() para obter o bean
         return authenticationManagerBuilder.build();
     }
@@ -84,14 +84,14 @@ public class WebSecurityConfig {
                 .requestMatchers("/api/usuarios/cadastro", "/api/usuarios/login").permitAll()
                 
                 .requestMatchers(HttpMethod.GET, "/api/transacoes/**").hasAnyAuthority("ROLE_USER", 
-                		"admin")
+                		"ROLE_ADMIN")
                 
                 .requestMatchers(HttpMethod.POST, "/api/transacoes/**").hasAnyAuthority("ROLE_USER", 
-                		"admin")
+                		"ROLE_ADMIN")
                 
-                .requestMatchers(HttpMethod.PUT, "/api/transacoes/**").hasAuthority("admin")
+                .requestMatchers(HttpMethod.PUT, "/api/transacoes/**").hasAuthority("ROLE_ADMIN")
                 
-                .requestMatchers(HttpMethod.DELETE, "/api/transacoes/**").hasAuthority("admin")
+                .requestMatchers(HttpMethod.DELETE, "/api/transacoes/**").hasAuthority("ROLE_ADMIN")
                 
                 .requestMatchers("/api/usuarios/current-user").authenticated()  // Permitir acesso para usuários autenticados
 

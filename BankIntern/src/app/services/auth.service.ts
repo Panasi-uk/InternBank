@@ -35,7 +35,7 @@ export class AuthService {
   //definir um metodo register(){}: porque a partir dele, a requisição ao backend será feita
   // ao usar essa expressão definimos um metodo que passa a ser uma tarefa assincrona
   register(usuario: Usuario, roleName: string): Observable<{message: string}>{
-    return this.http.post<{message: string}>(`${this.apiUrl}/api/usuarios?roleName=${roleName}`,usuario)
+    return this.http.post<{message: string}>(`${this.apiUrl}/api/user?roleName=${roleName}`,usuario)
   } 
 
 
@@ -44,7 +44,7 @@ export class AuthService {
       console.log('Enviando para o backend:', credentials)
 
 
-      return this.http.post<{message:string}>(`${this.apiUrl}/usuarios/login`, credentials, {headers: new HttpHeaders({'Content-Type':'application/json'})}).pipe(
+      return this.http.post<{message:string}>(`${this.apiUrl}/user/login`, credentials, {headers: new HttpHeaders({'Content-Type':'application/json'})}).pipe(
         tap((response)=>{
           console.log('Login bem sucedido!')
           localStorage.setItem('authHeader', authHeader) //atualiza o state/estado da aplicação
@@ -71,7 +71,7 @@ export class AuthService {
 
     //6- definir o metodo logout
     logout(): Observable<void>{
-      return this.http.post<void>(`${this.apiUrl}/usuarios/logout`, {}, {
+      return this.http.post<void>(`${this.apiUrl}/user/logout`, {}, {
         headers: new HttpHeaders({Authorization: this.getAuthHeader()})
       }).pipe(
         tap(()=> {
