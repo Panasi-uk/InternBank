@@ -41,6 +41,9 @@ public class CadastroDTO {
 	
 	@NotBlank(message = "Insira seu Numero")
 	private String numero;
+	
+	@NotBlank(message = "Insira o papel do usuário")
+    private String role;
 
 	public String getNome() {
 		return nome;
@@ -122,6 +125,12 @@ public class CadastroDTO {
 		this.numero = numero;
 	}
 	
-	
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 	
 }

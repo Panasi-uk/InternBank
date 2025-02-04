@@ -27,8 +27,8 @@ public class Conta {
     @Column(name="Numero_Conta", nullable = false, length = 20)
     private String numeroConta;
  
-    @Column(name="Senha", nullable = false, length = 50)
-    private String senha;
+    @Column(name = "Email", nullable = false, unique = true, length = 100)
+    private String email;
  
     //ESTABELECER RELAÇÃO ENTRE TABELAS
     //um usuario para uma unica conta
@@ -84,12 +84,12 @@ public class Conta {
 		this.numeroConta = numeroConta;
 	}
 
-	public String getSenha() {
-		return senha;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setSenha(String senha) {
-		this.senha = senha;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public Usuario getUsuario() {

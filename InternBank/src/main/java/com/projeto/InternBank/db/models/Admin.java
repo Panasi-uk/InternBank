@@ -21,6 +21,9 @@ public class Admin {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer adminId;
+    
+    @Column(name = "Email", nullable = false, unique = true, length = 100)
+    private String email;
  
     @Column(name = "Criacao", nullable = false)
     private LocalDateTime criacao;
@@ -65,6 +68,8 @@ public class Admin {
 	public void setEdicao(LocalDateTime edicao) {
 		this.edicao = edicao;
 	}
+	
+	
 
 	/*public Usuario getUsuario() {
 		return usuario;
@@ -72,6 +77,14 @@ public class Admin {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;}*/
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
 	public Set<Usuario> getUsuarios() {
 		return usuarios;

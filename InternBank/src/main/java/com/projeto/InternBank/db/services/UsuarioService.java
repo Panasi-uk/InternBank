@@ -38,8 +38,8 @@ public class UsuarioService implements UserDetailsService {
 	
 	//praticar método do service que fará busca de um email
 	
-	public Usuario findUserByCpf(String cpf) {
-		return usuarioRepository.findByCpf(cpf);
+	public Usuario findUserByEmail(String email) {
+		return usuarioRepository.findByEmail(email);
 	}
 	
 	public Usuario findUserById(Long id) {
@@ -47,20 +47,17 @@ public class UsuarioService implements UserDetailsService {
 	}
 	//////////////codigo adaptado//////////////
 	@Transactional
-	public void saveUsuario(Usuario usuario, String role) {
-		usuario.setSenha(bCryptPasswordEncoder.encode(usuario.getSenha()));
-		usuario.setEnabled(true);
-		if(!"ROLE_ADMIN".equals(role) && !"ROLE_USER".equals(role)) {
-			role = "ROLE_USER";
-		}
-		Set<String>roles = new HashSet<>();
-		roles.add(role);
-		//usuario.setRoles(roles);
-		
-		usuario.setRole(role);
-		usuarioRepository.save(usuario);
-		System.out.println("Usuário cadastrado com sucesso! " + 		usuario.getEmail());
-    }
+	public void saveUsuario(Usuario usuario, String roleName) {
+	    usuario.setSenha(bCryptPasswordEncoder.encode(usuario.getSenha()));
+	    usuario.setEnabled(true);
+	    if(roleName == null || (!roleName.equals("ROLE_ADMIN") && !roleName.equals("ROLE_USER"))) {
+	        roleName = "ROLE_USER"; // Role padrão se não informado
+	    }
+	    usuario.setRole(roleName); // Continua tratando role como string
+	    usuarioRepository.save(usuario);
+	    System.out.println("Usuário cadastrado com sucesso! " + usuario.getEmail());
+	}
+
 	//carregar/buscar usuário por email/nome spring security
 	@Override
 	public UserDetails loadUserByUsername(String email) throws 	UsernameNotFoundException{
@@ -83,7 +80,7 @@ public class UsuarioService implements UserDetailsService {
 	private List<GrantedAuthority> getUserAuthority(Set<String> usuarioRoles){
 		Set<GrantedAuthority> roles = new HashSet<>();
 		usuarioRoles.forEach((role) -> {
-			roles.add(new SimpleGrantedAuthority("ROLE_ " + role));
+			roles.add(new SimpleGrantedAuthority(role));
 		});
 		
 		return new ArrayList<>(roles);
