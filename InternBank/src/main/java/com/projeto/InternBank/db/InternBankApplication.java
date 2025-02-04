@@ -23,22 +23,21 @@ import org.springframework.boot.SpringApplication;
  
     	@SpringBootApplication
     	public class InternBankApplication {
- 
-    	    private static final Integer ADMIN_ID = 1; // Use a valid ID or unique identifier
- 
+
+    	    private static final Integer ADMIN_ID = 1;
+
     	    public static void main(String[] args) {
     	        SpringApplication.run(InternBankApplication.class, args);
     	    }
- 
+
     	    @Bean
     	    CommandLineRunner initAdmin(AdminRepository adminRepository) {
     	        return args -> {
-    	            // Check if an admin with ID exists
-    	            Optional<Admin> adminOptional = Optional.ofNullable(adminRepository.findById("ADMIN_ID"));
- 
+    	            Optional<Admin> adminOptional = adminRepository.findById(ADMIN_ID);
+
     	            if (adminOptional.isEmpty()) {
     	                Admin newAdmin = new Admin();
-    	                newAdmin.setAdminId(ADMIN_ID); // Set a valid admin ID
+    	                newAdmin.setAdminId(ADMIN_ID);
     	                adminRepository.save(newAdmin);
     	                System.out.println("Admin created with ID: " + ADMIN_ID);
     	            } else {
@@ -46,16 +45,15 @@ import org.springframework.boot.SpringApplication;
     	            }
     	        };
     	    }
- 
+
     	    @Bean
     	    CommandLineRunner initUser(UsuarioRepository usuarioRepository) {
     	        return args -> {
-    	            // Check if a user with email "usuario" exists
-    	            Optional<Usuario> userOptional = Optional.ofNullable(usuarioRepository.findByEmail("usuario"));
- 
+    	            Optional<Usuario> userOptional = usuarioRepository.findByEmail("usuario");
+
     	            if (userOptional.isEmpty()) {
     	                Usuario newUser = new Usuario();
-    	                newUser.setEmail("usuario"); // Set the email
+    	                newUser.setEmail("usuario");
     	                usuarioRepository.save(newUser);
     	                System.out.println("User created with email: usuario");
     	            } else {
@@ -64,4 +62,3 @@ import org.springframework.boot.SpringApplication;
     	        };
     	    }
     	}
- 

@@ -53,7 +53,7 @@ public class WebSecurityConfig {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
 
-        config.setAllowedOrigins(Arrays.asList("huttp://localhost:4200", "http://localhost:8080"));
+        config.setAllowedOrigins(Arrays.asList("http://localhost:4200", "http://localhost:8080"));
         config.setAllowedMethods(Arrays.asList(
             HttpMethod.GET.name(),
             HttpMethod.POST.name(),

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +40,7 @@ public class UsuarioService implements UserDetailsService {
 	//praticar método do service que fará busca de um email
 	
 	public Usuario findUserByEmail(String email) {
-		return usuarioRepository.findByEmail(email);
+		return usuarioRepository.findEmail(email);
 	}
 	
 	public Usuario findUserById(Long id) {
@@ -61,7 +62,7 @@ public class UsuarioService implements UserDetailsService {
 	//carregar/buscar usuário por email/nome spring security
 	@Override
 	public UserDetails loadUserByUsername(String email) throws 	UsernameNotFoundException{
-		Usuario usuario = usuarioRepository.findByEmail(email);
+		Usuario usuario = usuarioRepository.findEmail(email);
 		//verificar o valor de usuario
 		if(usuario == null) {
 			throw new UsernameNotFoundException("Email do usuário não encontrado: " + email);
@@ -85,6 +86,10 @@ public class UsuarioService implements UserDetailsService {
 		
 		return new ArrayList<>(roles);
 	}
+	public List<Usuario> buscarPorRole(String role) {
+	    return usuarioRepository.findByRolesContaining(role);
+	}
+
 		
 }
 	
