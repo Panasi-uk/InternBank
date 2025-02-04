@@ -17,7 +17,7 @@ export class AuthService {
   //querendo inserir um registro no banco de daod. como pode ser feito?
   // no backend o endpoint é '/users/register'
   //http://localhost:8080/api/users/register
-  private apiUrl = 'http://localhost:8080/api'
+  private apiUrl = 'http://localhost:8080/api/usuario'
 
   //2 - definir no construtor a injeção de depencia da classe HttpVliente. Por que?
   // Porque a partir do uso desta injeção de dependencia é que serão realizadas a requisições http para as APIs do backend
@@ -35,7 +35,7 @@ export class AuthService {
   //definir um metodo register(){}: porque a partir dele, a requisição ao backend será feita
   // ao usar essa expressão definimos um metodo que passa a ser uma tarefa assincrona
   register(usuario: Usuario, roleName: string): Observable<{message: string}>{
-    return this.http.post<{message: string}>(`${this.apiUrl}/api/user?roleName=${roleName}`,usuario)
+    return this.http.post<{message: string}>(`${this.apiUrl}/user/register?roleName=${roleName}`,usuario)
   } 
 
 
@@ -44,7 +44,7 @@ export class AuthService {
       console.log('Enviando para o backend:', credentials)
 
 
-      return this.http.post<{message:string}>(`${this.apiUrl}/user/login`, credentials, {headers: new HttpHeaders({'Content-Type':'application/json'})}).pipe(
+      return this.http.post<{message:string}>(`${this.apiUrl}/usuario/login`, credentials, {headers: new HttpHeaders({'Content-Type':'application/json'})}).pipe(
         tap((response)=>{
           console.log('Login bem sucedido!')
           localStorage.setItem('authHeader', authHeader) //atualiza o state/estado da aplicação
@@ -63,7 +63,7 @@ export class AuthService {
     
     
     getCurrentUserEmail(): Observable<{email: string}>{
-      return this.http.get<{email: string}>(`${this.apiUrl}/users/current-user`, 
+      return this.http.get<{email: string}>(`${this.apiUrl}/usuario/current-user`, 
         {withCredentials: true})
         //metodo assincrona que recupera o usuario logado no sistema
         //requisição: get para rota, que habilita o uso de cookies a partir do  {withCredentials: true}
@@ -71,7 +71,7 @@ export class AuthService {
 
     //6- definir o metodo logout
     logout(): Observable<void>{
-      return this.http.post<void>(`${this.apiUrl}/user/logout`, {}, {
+      return this.http.post<void>(`${this.apiUrl}/usuario/logout`, {}, {
         headers: new HttpHeaders({Authorization: this.getAuthHeader()})
       }).pipe(
         tap(()=> {
