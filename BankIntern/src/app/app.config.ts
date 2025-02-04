@@ -8,13 +8,13 @@ provideRouter; é uma função que fornece o roteador.
 */
 
 import { routes } from './app.routes';
-// Importa o arquivo app.routes.ts
+
 
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
-// Importa as funções provideClientHydration e withEventReplay do pacote @angular/platform-browser.
 
-import { provideHttpClient } from '@angular/common/http';
-// Importa a função provideHttpClient do pacote @angular/common/http.
+import { provideHttpClient, withInterceptors} from '@angular/common/http';
+
+import { authInterceptor } from './interceptor/auth.interceptor';
 
 // Define a constante appConfig que é um objeto com a propriedade providers que é um array de funções.
 export const appConfig: ApplicationConfig = {
@@ -25,7 +25,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes), 
     provideClientHydration(withEventReplay()),
     // Fornece a detecção de mudanças de zona, o roteador, a hidratação do cliente e o replay de eventos.
-    provideHttpClient()
+    provideHttpClient(withInterceptors([authInterceptor]))
   ]
   
 };
