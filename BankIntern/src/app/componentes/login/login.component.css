@@ -45,7 +45,7 @@ input[type="password"] {
     border: 1px solid var(--quarta-cor);
     border-radius: 7px;
     background-color: var(--quinta-cor);
-    color: var(--quinta-cor);
+    color: var(--cor-terceira);
     font-family: var(--fonte-primaria);
 }
 

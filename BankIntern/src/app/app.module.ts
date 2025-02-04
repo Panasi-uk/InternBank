@@ -10,6 +10,7 @@ import { PagamentoComponent } from './componentes/pagamento/pagamento.component'
 import { PixComponent } from './componentes/pix/pix.component';
 import { DepositoComponent } from './componentes/deposito/deposito.component';
 import { SaqueComponent } from './componentes/saque/saque.component';
+import { AdmComponent } from './componentes/adm/adm.component';
 
 @NgModule({
   imports: [
@@ -23,7 +24,7 @@ import { SaqueComponent } from './componentes/saque/saque.component';
     PagamentoComponent,
     PixComponent,
     DepositoComponent,
-    SaqueComponent
+    SaqueComponent,
   ],
   providers: [],
 })
