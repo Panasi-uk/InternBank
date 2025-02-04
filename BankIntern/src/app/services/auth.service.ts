@@ -34,9 +34,9 @@ export class AuthService {
   //3 - definir a requisição e seus elementos logicos necessarios para o endpoint de cadastro 
   //definir um metodo register(){}: porque a partir dele, a requisição ao backend será feita
   // ao usar essa expressão definimos um metodo que passa a ser uma tarefa assincrona
-  register(usuario: Usuario, roleName: string): Observable<{message: string}>{
-    return this.http.post<{message: string}>(`${this.apiUrl}/user/register?roleName=${roleName}`,usuario)
-  } 
+  register(usuario: Usuario): Observable<{message: string}> {
+    return this.http.post<{message: string}>(`${this.apiUrl}/usuario/cadastro`, usuario);
+  }
 
 
     login(credentials: {email: string, password: string}): Observable<{message: string}>{
