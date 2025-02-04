@@ -14,7 +14,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
+import com.projeto.InternBank.db.models.Admin;
 import com.projeto.InternBank.db.models.Usuario;
 import com.projeto.InternBank.db.repositories.AdminRepository;
 import com.projeto.InternBank.db.repositories.UsuarioRepository;

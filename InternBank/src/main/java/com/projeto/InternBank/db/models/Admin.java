@@ -20,7 +20,7 @@ import jakarta.persistence.Table;
 public class Admin {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer adminId;
+    private String adminId;
  
     @Column(name = "Criacao", nullable = false)
     private LocalDateTime criacao;
@@ -42,11 +42,11 @@ public class Admin {
     	
     }
 
-	public Integer getAdminId() {
+	public String getAdminId() {
 		return adminId;
 	}
 
-	public void setAdminId(Integer adminId) {
+	public void setAdminId(String adminId) {
 		this.adminId = adminId;
 	}
 

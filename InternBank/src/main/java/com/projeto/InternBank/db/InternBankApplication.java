@@ -24,7 +24,7 @@ import org.springframework.boot.SpringApplication;
     	@SpringBootApplication
     	public class InternBankApplication {
  
-    	    private static final Integer ADMIN_ID = 1; // Use a valid ID or unique identifier
+    	    private static final String ADMIN_ID = "";
  
     	    public static void main(String[] args) {
     	        SpringApplication.run(InternBankApplication.class, args);
@@ -34,7 +34,7 @@ import org.springframework.boot.SpringApplication;
     	    CommandLineRunner initAdmin(AdminRepository adminRepository) {
     	        return args -> {
     	            // Check if an admin with ID exists
-    	            Optional<Admin> adminOptional = Optional.ofNullable(adminRepository.findById("ADMIN_ID"));
+    	            Optional<Object> adminOptional = Optional.ofNullable(adminRepository.findByadminId(( "ADMIN_ID")));
  
     	            if (adminOptional.isEmpty()) {
     	                Admin newAdmin = new Admin();

@@ -48,7 +48,7 @@ public class UsuarioController {
 				
 				Authentication authentication = authenticationManager.authenticate( 
 						new UsernamePasswordAuthenticationToken(
-										usuariologinDto.getAgenciaconta(),
+										usuariologinDto.getEmail(),
 										usuariologinDto.getSenha()
 										)
 					);
@@ -78,7 +78,7 @@ public class UsuarioController {
 				){ 
 			
 			//veerify se ja existe um usuer com o msm email q esta sendo cadastrado
-			Usuario usuarioExists = serviceUsuario.findUserByCpf(cadastroDto.getCpf());
+			Usuario usuarioExists = serviceUsuario.findUserByEmail(cadastroDto.getEmail());
 			
 			//verify a existencia do email
 			

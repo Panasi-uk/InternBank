@@ -19,7 +19,7 @@ public class Conta {
  
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer contaId;
+    private Long contaId;
  
     @Column(name= "Agencia", nullable = false, length = 10)
     private String agencia;
@@ -60,12 +60,22 @@ public class Conta {
     }
     
 
-	public Integer getContaId() {
+
+
+	public Long getContaId() {
 		return contaId;
 	}
 
-	public void setContaId(Integer contaId) {
+	public void setContaId(Long contaId) {
 		this.contaId = contaId;
+	}
+
+	public String getNumeroConta() {
+		return numeroConta;
+	}
+
+	public void setNumeroConta(String numeroConta) {
+		this.numeroConta = numeroConta;
 	}
 
 	public String getAgencia() {
@@ -76,13 +86,6 @@ public class Conta {
 		this.agencia = agencia;
 	}
 
-	public String getNumeroConta() {
-		return numeroConta;
-	}
-
-	public void setNumeroConta(String numeroConta) {
-		this.numeroConta = numeroConta;
-	}
 
 	public String getSenha() {
 		return senha;
