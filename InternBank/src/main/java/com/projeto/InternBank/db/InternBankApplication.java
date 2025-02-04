@@ -24,7 +24,9 @@ import org.springframework.boot.SpringApplication;
     	@SpringBootApplication
     	public class InternBankApplication {
 
+
     	    private static final Integer ADMIN_ID = 1;
+
 
     	    public static void main(String[] args) {
     	        SpringApplication.run(InternBankApplication.class, args);

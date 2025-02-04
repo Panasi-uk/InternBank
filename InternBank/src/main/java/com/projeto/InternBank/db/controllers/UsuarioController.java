@@ -43,8 +43,10 @@ public class UsuarioController {
 				Authentication authentication = authenticationManager
 						.authenticate( 
 						new UsernamePasswordAuthenticationToken(
+
 										usuarioLoginDto.getEmail(),
 										usuarioLoginDto.getSenha()
+
 										)
 									);
 				
@@ -74,8 +76,10 @@ public class UsuarioController {
 				@RequestParam String roleName // receber o nome da role/papel do 				user como param da requeisição
 				){ 
 			
+
 			//verify se ja existe um user com o msm email q esta sendo cadastrado
 			Usuario usuarioExists = 			usuarioService.findUserByEmail(cadastroDto.getEmail());
+
 			
 			//verify a existencia do email
 			

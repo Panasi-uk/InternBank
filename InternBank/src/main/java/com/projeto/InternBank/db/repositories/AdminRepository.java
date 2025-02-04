@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.projeto.InternBank.db.models.Admin;
+
 import com.projeto.InternBank.db.models.Usuario;
 
 public interface AdminRepository extends JpaRepository <Admin, Long>{

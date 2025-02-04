@@ -20,6 +20,7 @@ import jakarta.persistence.Table;
 public class Admin {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Integer adminId;
     
     @Column(name = "Email", nullable = false, unique = true, length = 100)

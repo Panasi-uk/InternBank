@@ -15,7 +15,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
+import com.projeto.InternBank.db.models.Admin;
 import com.projeto.InternBank.db.models.Usuario;
 import com.projeto.InternBank.db.repositories.AdminRepository;
 import com.projeto.InternBank.db.repositories.UsuarioRepository;
@@ -40,7 +40,9 @@ public class UsuarioService implements UserDetailsService {
 	//praticar método do service que fará busca de um email
 	
 	public Usuario findUserByEmail(String email) {
+
 		return usuarioRepository.findEmail(email);
+
 	}
 	
 	public Usuario findUserById(Long id) {

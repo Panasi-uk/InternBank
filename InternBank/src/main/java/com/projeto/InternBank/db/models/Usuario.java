@@ -57,6 +57,8 @@ public class Usuario {
 
     @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
     private Conta conta;
+    
+    
 
     @OneToMany(mappedBy = "usuario")
     private Set<Deposito> deposito = new HashSet<>();
@@ -70,6 +72,7 @@ public class Usuario {
     @OneToMany(mappedBy = "usuario")
     private Set<Saque> saque = new HashSet<>();
     
+    
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "usuario_roles", joinColumns = @JoinColumn(name = "usuario_id"))
     @Column(name = "role")
@@ -77,17 +80,35 @@ public class Usuario {
 
     // GETTERS E SETTERS
 
-    public Long getId() { 
-    	return id; 
-    	}
-    public void setId(Long id) { 
-    	this.id = id; 
-    	}
 
     public String getNome() { 
     	return nome; 
     	}
-    public void setNome(String nome) { 
+    public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public Admin getAdmin() {
+		return admin;
+	}
+	public void setAdmin(Admin admin) {
+		this.admin = admin;
+	}
+	public Conta getConta() {
+		return conta;
+	}
+	public void setConta(Conta conta) {
+		this.conta = conta;
+	}
+	public Set<String> getRoles() {
+		return roles;
+	}
+	public void setRoles(Set<String> roles) {
+		this.roles = roles;
+	}
+	public void setNome(String nome) { 
     	this.nome = nome; 
     	}
 
