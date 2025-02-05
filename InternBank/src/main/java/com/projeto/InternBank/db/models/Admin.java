@@ -21,7 +21,7 @@ public class Admin {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    private Integer adminId;
+    private Integer Admin_id;
     
     @Column(name = "Email", nullable = false, unique = true, length = 100)
     private String email;
@@ -47,11 +47,11 @@ public class Admin {
     }
 
 	public Integer getAdminId() {
-		return adminId;
+		return Admin_id;
 	}
 
-	public void setAdminId(Integer adminId) {
-		this.adminId = adminId;
+	public void setAdminId(Integer id) {
+		this.Admin_id = id;
 	}
 
 	public LocalDateTime getCriacao() {

@@ -26,9 +26,8 @@ public class TransacoesService {
         return transacoesRepository.findAll();
     }
 
-    public Transacoes getTransacaoById(Long id) {
-        Optional<Transacoes> transacao = transacoesRepository.findById(id);
-        return transacao.orElse(null);
+    public Optional<Transacoes> getTransacaoById(Long id) {
+        return transacoesRepository.findById(id);
     }
 
     public Transacoes createTransacao(Transacoes transacoes) {
@@ -43,7 +42,11 @@ public class TransacoesService {
         return null;
     }
 
-    public void deleteTransacao(Long id) {
-        transacoesRepository.deleteById(id);
+    public boolean deleteTransacao(Long id) {
+        if (transacoesRepository.existsById(id)) {
+            transacoesRepository.deleteById(id);
+            return true;
+        }
+        return false;
     }
 }
