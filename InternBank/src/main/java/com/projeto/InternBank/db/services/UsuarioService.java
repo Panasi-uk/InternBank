@@ -15,6 +15,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
 import com.projeto.InternBank.db.models.Admin;
 import com.projeto.InternBank.db.models.Usuario;
 import com.projeto.InternBank.db.repositories.AdminRepository;
@@ -34,8 +36,19 @@ public class UsuarioService implements UserDetailsService {
 	private UsuarioRepository usuarioRepository;
 	
 	//2° classe que possibilita a criação de hash de senha
+	
+	//private BCryptPasswordEncoder bCryptPasswordEncoder;
+	private final PasswordEncoder passwordEncoder;
 	@Autowired
-	private BCryptPasswordEncoder bCryptPasswordEncoder;
+	public UsuarioService() {
+		this.passwordEncoder = new BCryptPasswordEncoder();
+	}
+	public String encodePassword(String password) {
+		return passwordEncoder.encode(password);
+	}
+	public boolean validadePassword(String rawPassword, String encodedPassword) {
+		return passwordEncoder.matches(rawPassword, encodedPassword);
+	}
 	
 	//praticar método do service que fará busca de um email
 	
@@ -51,14 +64,23 @@ public class UsuarioService implements UserDetailsService {
 	//////////////codigo adaptado//////////////
 	@Transactional
 	public void saveUsuario(Usuario usuario, String roleName) {
-	    usuario.setSenha(bCryptPasswordEncoder.encode(usuario.getSenha()));
-	    usuario.setEnabled(true);
-	    if(roleName == null || (!roleName.equals("ROLE_ADMIN") && !roleName.equals("ROLE_USER"))) {
-	        roleName = "ROLE_USER"; // Role padrão se não informado
+	    
+	    // Verificar se o roleName não é nulo ou vazio
+	    if (roleName == null || roleName.trim().isEmpty()) {
+	        throw new IllegalArgumentException("Nome da role não pode ser nulo ou vazio!");
 	    }
-	    usuario.setRole(roleName); // Continua tratando role como string
+
+	    // Criptografar a senha antes de salvar no banco de dados
+	    usuario.setSenha(passwordEncoder.encode(usuario.getSenha())); 
+	    usuario.setEnabled(true); // Habilitando o usuário no sistema
+	    
+	    // Definir a role do usuário diretamente
+	    usuario.setRole(roleName);
+
+	    // Salvar o usuário no banco de dados
 	    usuarioRepository.save(usuario);
-	    System.out.println("Usuário cadastrado com sucesso! " + usuario.getEmail());
+	    
+	    System.out.println("Usuário salvo com sucesso: " + usuario.getEmail());
 	}
 
 	//carregar/buscar usuário por email/nome spring security
